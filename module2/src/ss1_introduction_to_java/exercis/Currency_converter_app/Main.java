@@ -1,4 +1,4 @@
-package ss1_introduction_to_java.exercis.Currency_converter_app;
+package ss1_introduction_to_java.exercis.currency_converter_app;
 
 import java.util.Scanner;
 
