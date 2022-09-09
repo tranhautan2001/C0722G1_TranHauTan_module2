@@ -34,6 +34,7 @@ public class Fan {
         this.speed = speed;
     }
 
+
     public void setOn(boolean on) {
         this.on = on;
     }
