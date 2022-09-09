@@ -35,6 +35,7 @@ public class Fan {
     }
 
 
+
     public void setOn(boolean on) {
         this.on = on;
     }
