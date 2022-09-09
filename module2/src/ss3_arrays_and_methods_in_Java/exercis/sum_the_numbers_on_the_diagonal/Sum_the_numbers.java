@@ -21,11 +21,6 @@ public class Sum_the_numbers {
         for (int i = 0; i < array.length; i++) {
             sum += array[i][i];
         }
-        System.out.println("tổng đường chéo 1: " + sum);
-        int sum1 = 0;
-        for (int i = array.length - 1; i >= 0; i--) {
-            sum1 += array[i][i];
-        }
-        System.out.println("tổng đường chéo 2: " + sum1);
+        System.out.println("tổng đường chéo là : " + sum);
     }
 }
