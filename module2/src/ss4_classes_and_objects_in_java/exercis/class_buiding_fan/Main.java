@@ -1,4 +1,4 @@
-package ss4_classes_and_objects_in_java.class_buiding_fan;
+package ss4_classes_and_objects_in_java.exercis.class_buiding_fan;
 
 public class Main {
     public static void main(String[] args) {

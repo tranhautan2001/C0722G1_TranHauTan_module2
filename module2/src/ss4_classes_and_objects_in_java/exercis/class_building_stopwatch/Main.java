@@ -1,4 +1,4 @@
-package ss4_classes_and_objects_in_java.class_building_stopwatch;
+package ss4_classes_and_objects_in_java.exercis.class_building_stopwatch;
 
 public class Main {
     public static void main(String[] args) {
