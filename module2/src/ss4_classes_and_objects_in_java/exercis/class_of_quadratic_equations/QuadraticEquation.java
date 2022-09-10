@@ -2,7 +2,12 @@ package ss4_classes_and_objects_in_java.exercis.class_of_quadratic_equations;
 
 public class QuadraticEquation {
 
-    double a, b, c;
+    double a ;
+    double b ;
+    double c ;
+
+    public QuadraticEquation() {
+    }
 
     public QuadraticEquation(double a, double b, double c) {
         this.a = a;
