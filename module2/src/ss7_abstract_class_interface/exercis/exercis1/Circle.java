@@ -1,14 +1,14 @@
-package ss6_inheritance.practice.systemsbjects;
+package ss7_abstract_class_interface.exercis.exercis1;
 
-public class Circle extends Shape{
-    private double radius = 1.0;
+public class Circle implements Resizeable {
+    private double radius =1;
 
-
-    public Circle(String color, boolean filled, double radius) {
-        super(color, filled);
-        this.radius = radius;
+    public Circle() {
     }
 
+    public Circle(double radius) {
+        this.radius = radius;
+    }
 
     public double getRadius() {
         return radius;
@@ -30,5 +30,10 @@ public class Circle extends Shape{
         return "Circle{" +
                 "radius=" + radius +
                 '}';
+    }
+
+    @Override
+    public void resize(double percent) {
+      this.radius+=this.radius*percent/100;
     }
 }
