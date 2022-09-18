@@ -1,4 +1,4 @@
-package ss10_dsa_danh_sach.exercis;
+package ss10_dsa_danh_sach.exercis.exercis1;
 
 public class MyListTest {
     public static class Student {

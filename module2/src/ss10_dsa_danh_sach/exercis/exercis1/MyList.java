@@ -1,4 +1,4 @@
-package ss10_dsa_danh_sach.exercis;
+package ss10_dsa_danh_sach.exercis.exercis1;
 
 import java.util.Arrays;
 
@@ -29,7 +29,7 @@ public class MyList<E> {
     }
 
 
-    public Object clone() {
+    public Object clear() {
         size = 0;
         for (int i = 0; i < elements.length; i++) {
             elements[i] = null;
