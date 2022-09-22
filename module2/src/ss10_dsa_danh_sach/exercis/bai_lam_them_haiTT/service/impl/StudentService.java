@@ -27,33 +27,71 @@ public class StudentService implements IStudentService {
         int idRemove = Integer.parseInt(scanner.nextLine());
         boolean isFlag = false;
 
-        for (Student student : studentList){
-            if (student.getId() == idRemove){
+        for (Student student : studentList) {
+            if (student.getId() == idRemove) {
                 System.out.println("Bạn có chắc muốn xóa sinh viên này? \n " +
                         "1. CÓ \n" +
                         "2. KHÔNG");
                 int choiceYesNo = Integer.parseInt(scanner.nextLine());
-                if (choiceYesNo == 1){
+                if (choiceYesNo == 1) {
                     studentList.remove(student);
                     System.out.println("Xóa thành công! ");
 
                 }
-                isFlag =true;
+                isFlag = true;
                 break;
             }
         }
-        if (!isFlag){
+        if (!isFlag) {
             System.out.println("Không tìm thấy sinh viên này! ");
         }
     }
 
     @Override
     public void displayStudent() {
-        for (Student student : studentList){
+        for (Student student : studentList) {
             System.out.println(student);
         }
     }
-    public static Student infoStudent(){
+
+    @Override
+    public void seachStudent() {
+        do {
+            System.out.println("Nhập 1 để tìm kiếm giảng viên theo name: \n" +
+                    "Nhập 2 để tìm kiếm giảng viên theo ID: \n" +
+                    "Nhập 3 để thoát");
+            int choice = Integer.parseInt(scanner.nextLine());
+            switch (choice) {
+                case 1:
+                    String name = scanner.nextLine();
+                    for (int i = 0; i < studentList.size(); i++) {
+                        if (studentList.get(i).getName().equals(name)) {
+                            System.out.println(studentList.get(i));
+                            System.out.println("-----------------");
+                        }
+
+                    }
+                    break;
+                case 2:
+                    int ID = Integer.parseInt(scanner.nextLine());
+                    for (int i = 0; i < studentList.size(); i++) {
+                        if (studentList.get(i).getId() == ID) {
+                            System.out.println(studentList.get(i));
+                            System.out.println("-----------------");
+                            break;
+                        }
+
+                    }
+                    break;
+                case 3:
+                    return;
+            }
+        } while (true);
+
+
+    }
+
+    public static Student infoStudent() {
         System.out.print("Mời bạn nhập mã học sinh: ");
         int id = Integer.parseInt(scanner.nextLine());
         System.out.print("Mời bạn nhập tên học sinh: ");

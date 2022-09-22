@@ -52,10 +52,10 @@ public abstract class Person {
     @Override
     public String toString() {
         return
-                "id=" + id +
-                        ", name='" + name + '\'' +
-                        ", dateOfBirth='" + dateOfBirth + '\'' +
-                        ", sex='" + sex + '\'' ;
+                "ID=" + id +
+                        ", Tên ='" + name + '\'' +
+                        ", Ngày Sinh ='" + dateOfBirth + '\'' +
+                        ", Giới tính ='" + sex + '\'' ;
 
     }
 }
