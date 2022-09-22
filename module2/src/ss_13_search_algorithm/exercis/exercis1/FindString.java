@@ -12,6 +12,10 @@ public class FindString {
         LinkedList<Character> max = new LinkedList<>();
         for (int i = 0; i <string.length(); i++) {
             LinkedList<Character> list = new LinkedList<>();
+
+
+
+
             list.add(string.charAt(i));
             for (int j = 0; j <string.length(); j++) {
                 if (string.charAt(j) > list.getLast()){
