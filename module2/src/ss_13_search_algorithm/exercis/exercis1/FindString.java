@@ -18,7 +18,6 @@ public class FindString {
                     list.add(string.charAt(j));
                 }
 
-
             }
             if (list.size() > max .size()){
                 max.clear();
