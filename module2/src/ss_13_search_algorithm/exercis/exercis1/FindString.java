@@ -17,6 +17,8 @@ public class FindString {
                 if (string.charAt(j) > list.getLast()){
                     list.add(string.charAt(j));
                 }
+
+
             }
             if (list.size() > max .size()){
                 max.clear();
