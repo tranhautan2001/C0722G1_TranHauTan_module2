@@ -1,7 +1,7 @@
 package ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.model;
 
-public abstract class Person {
-    private int id;
+public abstract class Person  {
+    private Integer id;
     private String name;
     private String dateOfBirth;
     private String sex;
@@ -9,7 +9,7 @@ public abstract class Person {
     public Person() {
     }
 
-    public Person(int id, String name, String dateOfBirth, String sex) {
+    public Person(Integer id, String name, String dateOfBirth, String sex) {
 
         this.id = id;
         this.name = name;
@@ -17,11 +17,11 @@ public abstract class Person {
         this.sex = sex;
     }
 
-    public int getId() {
+    public Integer getInteger() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setInteger(Integer id) {
         this.id = id;
     }
 
@@ -55,7 +55,8 @@ public abstract class Person {
                 "ID=" + id +
                         ", Tên ='" + name + '\'' +
                         ", Ngày Sinh ='" + dateOfBirth + '\'' +
-                        ", Giới tính ='" + sex + '\'' ;
-
+                        ", Giới tính ='" + sex + '\'';
     }
 }
+
+

@@ -27,7 +27,7 @@ public class TeacherService implements ITeacherService {
         boolean isFlag = false;
 
         for (Teacher teacher : teacherList) {
-            if (teacher.getId() == idRemove) {
+            if (teacher.getInteger() == idRemove) {
                 System.out.println("Bạn có chắc muốn xóa giảng viên này? " +
                         "1. CÓ \n" +
                         "2. KHÔNG");
@@ -73,7 +73,7 @@ public class TeacherService implements ITeacherService {
                 case 2:
                     int ID = Integer.parseInt(scanner.nextLine());
                     for (int i = 0; i < teacherList.size(); i++) {
-                        if (teacherList.get(i).getId() == ID) {
+                        if (teacherList.get(i).getInteger() == ID) {
                             System.out.println(teacherList.get(i));
                             break;
                         }
@@ -86,6 +86,35 @@ public class TeacherService implements ITeacherService {
 
 
     }
+
+    @Override
+    public void sortTeacher() {
+        boolean isSwap = true;
+        Teacher teacher;
+        for (int i = 0; i < teacherList.size() - 1 && isSwap; i++) {
+            isSwap = false;
+            for (int j = 0; j < teacherList.size() - 1 - i; j++) {
+                int compareName = teacherList.get(j).getName().compareTo(teacherList.get(j + 1).getName());
+                if ( compareName> 0) {
+                    isSwap = true;
+                    teacher = teacherList.get(j + 1);
+                    teacherList.set(j + 1, teacherList.get(j));
+                    teacherList.set(j, teacher);
+                }
+                if (compareName==0){
+                    int compareId= teacherList.get(j).getInteger().compareTo(teacherList.get(j + 1).getInteger());
+                    if (compareId>0){
+                        isSwap = true;
+                        teacher = teacherList.get(j + 1);
+                        teacherList.set(j + 1, teacherList.get(j));
+                        teacherList.set(j, teacher);
+                    }
+                }
+            }
+        }
+        displayTeacher();
+    }
+
 
     public static Teacher infoTeacher() {
         System.out.print("Mời bạn nhập mã giảng viên: ");

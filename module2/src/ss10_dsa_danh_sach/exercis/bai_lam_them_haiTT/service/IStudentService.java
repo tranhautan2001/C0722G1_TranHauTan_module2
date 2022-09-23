@@ -9,4 +9,6 @@ public interface IStudentService {
 
     void seachStudent();
 
+    void sortStudent();
+
 }

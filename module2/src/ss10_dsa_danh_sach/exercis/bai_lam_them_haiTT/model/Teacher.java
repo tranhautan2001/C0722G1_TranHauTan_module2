@@ -20,7 +20,7 @@ public class Teacher extends Person {
     }
 
     public String getInfo() {
-        return String.format("%s,%s,%s,%s,%s\n", this.getId(), this.getName(), this.getDateOfBirth(), this.getSex(), this.getSpecialize());
+        return String.format("%s,%s,%s,%s,%s\n", this.getInteger(), this.getName(), this.getDateOfBirth(), this.getSex(), this.getSpecialize());
     }
 
     @Override
@@ -29,4 +29,5 @@ public class Teacher extends Person {
                 ", Công việc ='" + specialize + '\'' +
                 '}';
     }
+
 }

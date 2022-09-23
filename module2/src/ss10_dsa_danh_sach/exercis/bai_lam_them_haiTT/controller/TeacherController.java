@@ -17,6 +17,7 @@ public class TeacherController {
                     "2. Xóa giảng viên \n" +
                     "3. Xem danh sách giảng viên \n"  +
                     "4. Tìm kiếm giảng viên \n" +
+                    "5. Sắp xếp giảng viên \n" +
                     "5. Trở về menu chính");
             System.out.println("---------------------------");
             System.out.println("---------------------------");
@@ -40,6 +41,10 @@ public class TeacherController {
                     break;
                 }
                 case 5:{
+                    iTeacherService.sortTeacher();
+                    break;
+                }
+                case 6:{
                     return;
                 }
             }

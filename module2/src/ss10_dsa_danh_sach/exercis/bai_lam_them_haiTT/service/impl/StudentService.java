@@ -28,7 +28,7 @@ public class StudentService implements IStudentService {
         boolean isFlag = false;
 
         for (Student student : studentList) {
-            if (student.getId() == idRemove) {
+            if (student.getInteger() == idRemove) {
                 System.out.println("Bạn có chắc muốn xóa sinh viên này? \n " +
                         "1. CÓ \n" +
                         "2. KHÔNG");
@@ -75,7 +75,7 @@ public class StudentService implements IStudentService {
                 case 2:
                     int ID = Integer.parseInt(scanner.nextLine());
                     for (int i = 0; i < studentList.size(); i++) {
-                        if (studentList.get(i).getId() == ID) {
+                        if (studentList.get(i).getInteger() == ID) {
                             System.out.println(studentList.get(i));
                             System.out.println("-----------------");
                             break;
@@ -90,6 +90,22 @@ public class StudentService implements IStudentService {
 
 
     }
+
+    @Override
+    public void sortStudent() {
+        for (int i = 1; i < studentList.size(); i++) {
+            Student temp1 = studentList.get(i);
+            int j;
+            for (j = i - 1; j >= 0 && studentList.get(j).getName().compareTo(temp1.getName()) > 0; j--) {
+                studentList.set(j + 1, studentList.get(j));
+            }
+            studentList.set(j + 1, temp1);
+        }
+        displayStudent();
+    }
+
+
+
 
     public static Student infoStudent() {
         System.out.print("Mời bạn nhập mã học sinh: ");

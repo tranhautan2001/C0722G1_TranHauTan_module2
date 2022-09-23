@@ -16,7 +16,8 @@ public class StudentController {
                     "2. Xóa sinh viên \n" +
                     "3. Xem danh sách sinh viên \n" +
                     "4. Tìm kiếm sinh viên \n" +
-                    "5. Trở về menu chính");
+                    "5. Sắp xếp sinh viên \n" +
+                    "6. Trở về menu chính");
             System.out.println("---------------------------");
             System.out.println("---------------------------");
             int choice = Integer.parseInt(scanner.nextLine());
@@ -38,7 +39,11 @@ public class StudentController {
                     iStudentService.seachStudent();
                     break;
                 }
-                case 5: {
+                case 5:{
+                    iStudentService.sortStudent();
+                    break;
+                }
+                case 6: {
                     return;
                 }
                 }

@@ -1,6 +1,6 @@
 package ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.model;
 
-public class Student extends Person {
+public class Student extends Person{
     private String className;
     private double point;
 
@@ -30,7 +30,7 @@ public class Student extends Person {
     }
 
     public String getInfo() {
-        return String.format("%s,%s,%s,%s,%s,%s\n", this.getId(), this.getName(), this.getDateOfBirth(), this.getSex(),
+        return String.format("%s,%s,%s,%s,%s,%s\n", this.getInteger(), this.getName(), this.getDateOfBirth(), this.getSex(),
                 this.getClassName(), this.getPoint());
     }
 
@@ -41,4 +41,5 @@ public class Student extends Person {
                 ", Điểm =" + point +
                 '}';
     }
+
 }
