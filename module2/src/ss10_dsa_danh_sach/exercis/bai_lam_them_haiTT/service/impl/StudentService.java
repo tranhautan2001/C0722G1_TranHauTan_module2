@@ -1,6 +1,7 @@
 package ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.service.impl;
 
 import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.model.Student;
+import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.model.Teacher;
 import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.service.IStudentService;
 
 import java.util.ArrayList;
@@ -93,13 +94,28 @@ public class StudentService implements IStudentService {
 
     @Override
     public void sortStudent() {
-        for (int i = 1; i < studentList.size(); i++) {
-            Student temp1 = studentList.get(i);
-            int j;
-            for (j = i - 1; j >= 0 && studentList.get(j).getName().compareTo(temp1.getName()) > 0; j--) {
-                studentList.set(j + 1, studentList.get(j));
+        boolean isSwap = true;
+        Student student;
+        for (int i = 0; i < studentList.size() - 1 && isSwap; i++) {
+            isSwap = false;
+            for (int j = 0; j < studentList.size() - 1 - i; j++) {
+                int compareName = studentList.get(j).getName().compareTo(studentList.get(j + 1).getName());
+                if ( compareName> 0) {
+                    isSwap = true;
+                    student = studentList.get(j + 1);
+                    studentList.set(j + 1, studentList.get(j));
+                    studentList.set(j, student);
+                }
+                if (compareName==0){
+                    int compareId= studentList.get(j).getInteger().compareTo(studentList.get(j + 1).getInteger());
+                    if (compareId>0){
+                        isSwap = true;
+                        student = studentList.get(j + 1);
+                        studentList.set(j + 1, studentList.get(j));
+                        studentList.set(j, student);
+                    }
+                }
             }
-            studentList.set(j + 1, temp1);
         }
         displayStudent();
     }
