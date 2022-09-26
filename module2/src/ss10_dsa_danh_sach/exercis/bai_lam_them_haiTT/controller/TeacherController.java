@@ -18,7 +18,7 @@ public class TeacherController {
                     "3. Xem danh sách giảng viên \n"  +
                     "4. Tìm kiếm giảng viên \n" +
                     "5. Sắp xếp giảng viên \n" +
-                    "5. Trở về menu chính");
+                    "6. Trở về menu chính");
             System.out.println("---------------------------");
             System.out.println("---------------------------");
             int choice = Integer.parseInt(scanner.nextLine());

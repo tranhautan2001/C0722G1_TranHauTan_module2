@@ -1,9 +1,14 @@
 package ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.service.impl;
 
+import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.check_exception.CheckNameException;
+import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.check_exception.CheckNumberException;
+import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.check_exception.CheckScoreExeception;
 import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.model.Student;
 import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.model.Teacher;
 import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.service.IStudentService;
 
+import javax.naming.NameNotFoundException;
+import javax.swing.text.AttributeSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -124,18 +129,78 @@ public class StudentService implements IStudentService {
 
 
     public static Student infoStudent() {
-        System.out.print("Mời bạn nhập mã học sinh: ");
-        int id = Integer.parseInt(scanner.nextLine());
-        System.out.print("Mời bạn nhập tên học sinh: ");
-        String name = scanner.nextLine();
-        System.out.println("Mời bạn nhập ngày sinh học sinh: ");
-        String dateOfBirth = scanner.nextLine();
+        Scanner scanner = new Scanner(System.in);
+        int id;
+        do {
+            System.out.print("Mời bạn nhập mã học sinh: ");
+            try {
+                id = Integer.parseInt(scanner.nextLine());
+                if (id <= 0) {
+                    throw new CheckNumberException("nhập sai định dạng");
+                }
+                break;
+            } catch (CheckNumberException e) {
+                System.out.println(e.getMessage());
+            } catch (NumberFormatException e) {
+                System.out.println("không nhập chữ");
+            }
+        } while (true);
+
+
+        String name = "";
+        while (true){
+            try {
+                System.out.print("Mời bạn nhập tên học sinh: ");
+                name = scanner.nextLine();
+                for (int i = 0; i <name.length() ; i++) {
+                    if(Character.isDigit(name.charAt(i))) {
+                        throw new CheckNameException("Tên không được chứa số");
+                    }
+                }
+                break;
+            } catch (CheckNameException e) {
+                System.out.println(e.getMessage());
+
+            }
+        }
+        Integer dateOfBirth;
+        do {
+            System.out.println("Mời bạn nhập ngày sinh học sinh: ");
+            try {
+                dateOfBirth = Integer.parseInt(scanner.nextLine());
+                if (dateOfBirth<=0){
+                    throw new CheckNumberException("nhập sai định dạng");
+                }
+                break;
+            }catch (CheckNumberException e){
+                System.out.println("nhập lại");
+            }catch (NumberFormatException e){
+                System.out.println(e.getMessage());
+            }
+
+        }while (true);
+
         System.out.print("Mời bạn nhập giới tính học sinh: ");
         String sex = scanner.nextLine();
         System.out.print("Mời bạn nhập tên lớp: ");
         String className = scanner.nextLine();
-        System.out.print("Mời bạn nhập điểm của học sinh: ");
-        double point = Double.parseDouble(scanner.nextLine());
+        Double point;
+        do {
+            System.out.print("Mời bạn nhập điểm của học sinh: ");
+            try {
+                point = Double.parseDouble(scanner.nextLine());
+                if (point<0 || point>100){
+                    throw new CheckScoreExeception("nhập sai định dạng");
+
+                }
+                break;
+            }catch (CheckScoreExeception e){
+                System.out.println("nhập lại");
+            }catch (NumberFormatException e){
+                System.out.println(e.getMessage());
+            }
+        }while (true);
+
         Student student = new Student(id, name, dateOfBirth, sex, className, point);
         return student;
     }

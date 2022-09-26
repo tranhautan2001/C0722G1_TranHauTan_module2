@@ -3,13 +3,13 @@ package ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.model;
 public abstract class Person  {
     private Integer id;
     private String name;
-    private String dateOfBirth;
+    private Integer dateOfBirth;
     private String sex;
 
     public Person() {
     }
 
-    public Person(Integer id, String name, String dateOfBirth, String sex) {
+    public Person(Integer id, String name, Integer dateOfBirth, String sex) {
 
         this.id = id;
         this.name = name;
@@ -33,11 +33,11 @@ public abstract class Person  {
         this.name = name;
     }
 
-    public String getDateOfBirth() {
+    public Integer getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Integer dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
