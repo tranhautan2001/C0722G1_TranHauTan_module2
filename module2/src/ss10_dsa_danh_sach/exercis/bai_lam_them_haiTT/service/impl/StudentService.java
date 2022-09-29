@@ -1,22 +1,23 @@
 package ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.service.impl;
 
+import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.Utils.ReadFile;
+import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.Utils.WriteFile;
 import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.check_exception.CheckNameException;
 import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.check_exception.CheckNumberException;
 import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.check_exception.CheckScoreExeception;
 import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.model.Student;
-import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.model.Teacher;
 import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.service.IStudentService;
 
-import javax.naming.NameNotFoundException;
-import javax.swing.text.AttributeSet;
-import java.util.ArrayList;
+
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 
 public class StudentService implements IStudentService {
     private static Scanner scanner = new Scanner(System.in);
-    private static List<Student> studentList = new ArrayList<>();
+    private static final String PATH = "ss10_dsa_danh_sach\\exercis\\bai_lam_them_haiTT\\data\\student.txt";
+    private static List<Student> studentList = ReadFile.readStudentFile(PATH);
 
 
     @Override
@@ -25,6 +26,7 @@ public class StudentService implements IStudentService {
         studentList.add(student);
         System.out.println("Thêm mới sinh viên thành công! ");
 
+        WriteFile.writeStudentFile(PATH,studentList);
     }
 
     @Override
@@ -34,7 +36,7 @@ public class StudentService implements IStudentService {
         boolean isFlag = false;
 
         for (Student student : studentList) {
-            if (student.getInteger() == idRemove) {
+            if (student.getId() == idRemove) {
                 System.out.println("Bạn có chắc muốn xóa sinh viên này? \n " +
                         "1. CÓ \n" +
                         "2. KHÔNG");
@@ -42,6 +44,8 @@ public class StudentService implements IStudentService {
                 if (choiceYesNo == 1) {
                     studentList.remove(student);
                     System.out.println("Xóa thành công! ");
+
+                    WriteFile.writeStudentFile(PATH,studentList);
 
                 }
                 isFlag = true;
@@ -81,7 +85,7 @@ public class StudentService implements IStudentService {
                 case 2:
                     int ID = Integer.parseInt(scanner.nextLine());
                     for (int i = 0; i < studentList.size(); i++) {
-                        if (studentList.get(i).getInteger() == ID) {
+                        if (studentList.get(i).getId() == ID) {
                             System.out.println(studentList.get(i));
                             System.out.println("-----------------");
                             break;
@@ -99,29 +103,18 @@ public class StudentService implements IStudentService {
 
     @Override
     public void sortStudent() {
-        boolean isSwap = true;
-        Student student;
-        for (int i = 0; i < studentList.size() - 1 && isSwap; i++) {
-            isSwap = false;
-            for (int j = 0; j < studentList.size() - 1 - i; j++) {
-                int compareName = studentList.get(j).getName().compareTo(studentList.get(j + 1).getName());
-                if ( compareName> 0) {
-                    isSwap = true;
-                    student = studentList.get(j + 1);
-                    studentList.set(j + 1, studentList.get(j));
-                    studentList.set(j, student);
-                }
-                if (compareName==0){
-                    int compareId= studentList.get(j).getInteger().compareTo(studentList.get(j + 1).getInteger());
-                    if (compareId>0){
-                        isSwap = true;
-                        student = studentList.get(j + 1);
-                        studentList.set(j + 1, studentList.get(j));
-                        studentList.set(j, student);
-                    }
+        boolean needNextPass = true;
+        for (int i = 1; i < studentList.size() && needNextPass; i++) {
+
+            needNextPass = false;
+            for (int j = 0; j < studentList.size() - i; j++) {
+                if (studentList.get(j).getName().compareTo(studentList.get(j + 1).getName()) > 0) {
+                    Collections.swap(studentList, j, j + 1);
+                    needNextPass = true;
                 }
             }
         }
+        System.out.println("Danh sách sau sắp xếp: ");
         displayStudent();
     }
 
@@ -147,7 +140,7 @@ public class StudentService implements IStudentService {
         } while (true);
 
 
-        String name = "";
+        String name ;
         while (true){
             try {
                 System.out.print("Mời bạn nhập tên học sinh: ");
@@ -204,4 +197,5 @@ public class StudentService implements IStudentService {
         Student student = new Student(id, name, dateOfBirth, sex, className, point);
         return student;
     }
+
 }

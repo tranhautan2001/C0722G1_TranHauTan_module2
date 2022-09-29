@@ -1,27 +1,26 @@
 package ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.model;
 
 public abstract class Person  {
-    private Integer id;
+    private int id;
     private String name;
-    private Integer dateOfBirth;
+    private int dateOfBirth;
     private String sex;
 
     public Person() {
     }
 
-    public Person(Integer id, String name, Integer dateOfBirth, String sex) {
-
+    public Person(int id, String name, int dateOfBirth, String sex) {
         this.id = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.sex = sex;
     }
 
-    public Integer getInteger() {
+    public int getId() {
         return id;
     }
 
-    public void setInteger(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -33,11 +32,11 @@ public abstract class Person  {
         this.name = name;
     }
 
-    public Integer getDateOfBirth() {
+    public int getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Integer dateOfBirth) {
+    public void setDateOfBirth(int dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

@@ -6,9 +6,12 @@ public class Teacher extends Person {
     public Teacher() {
     }
 
-    public Teacher(int id, String name, Integer dateOfBirth, String sex, String specialize) {
+    public Teacher(int id, String name, int dateOfBirth, String sex, String specialize) {
         super(id, name, dateOfBirth, sex);
         this.specialize = specialize;
+    }
+
+    public Teacher(int id, String name, String s, String sex, String specialize) {
     }
 
     public String getSpecialize() {
@@ -20,7 +23,7 @@ public class Teacher extends Person {
     }
 
     public String getInfo() {
-        return String.format("%s,%s,%s,%s,%s\n", this.getInteger(), this.getName(), this.getDateOfBirth(), this.getSex(), this.getSpecialize());
+        return String.format("%s,%s,%s,%s,%s\n", this.getId(), this.getName(), this.getDateOfBirth(), this.getSex(), this.getSpecialize());
     }
 
     @Override

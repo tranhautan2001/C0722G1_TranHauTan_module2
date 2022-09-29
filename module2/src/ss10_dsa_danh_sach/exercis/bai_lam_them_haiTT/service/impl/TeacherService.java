@@ -1,17 +1,21 @@
 package ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.service.impl;
 
+import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.Utils.ReadFile;
+import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.Utils.WriteFile;
 import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.check_exception.CheckNameException;
 import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.check_exception.CheckNumberException;
 import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.model.Teacher;
 import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.service.ITeacherService;
+import ss_16_text_file.exercis.exercis1.common.Writer;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 public class TeacherService implements ITeacherService {
     private static Scanner scanner = new Scanner(System.in);
-    private static List<Teacher> teacherList = new ArrayList<>();
+    private static final String PATH = "ss10_dsa_danh_sach\\exercis\\bai_lam_them_haiTT\\data\\teacher.txt";
+    private static List<Teacher> teacherList = ReadFile.readTeacherFile(PATH);
 
 
     @Override
@@ -19,6 +23,8 @@ public class TeacherService implements ITeacherService {
         Teacher teacher = infoTeacher();
         teacherList.add(teacher);
         System.out.println("Thêm mới giảng viên thành công!");
+
+        WriteFile.writeTeacherFile(PATH,teacherList);
 
     }
 
@@ -29,7 +35,7 @@ public class TeacherService implements ITeacherService {
         boolean isFlag = false;
 
         for (Teacher teacher : teacherList) {
-            if (teacher.getInteger() == idRemove) {
+            if (teacher.getId() == idRemove) {
                 System.out.println("Bạn có chắc muốn xóa giảng viên này? " +
                         "1. CÓ \n" +
                         "2. KHÔNG");
@@ -37,6 +43,8 @@ public class TeacherService implements ITeacherService {
                 if (choiceYesNo == 1) {
                     teacherList.remove(teacher);
                     System.out.println("Xóa thành công! ");
+
+                    WriteFile.writeTeacherFile(PATH,teacherList);
                 }
                 isFlag = true;
                 break;
@@ -75,7 +83,7 @@ public class TeacherService implements ITeacherService {
                 case 2:
                     int ID = Integer.parseInt(scanner.nextLine());
                     for (int i = 0; i < teacherList.size(); i++) {
-                        if (teacherList.get(i).getInteger() == ID) {
+                        if (teacherList.get(i).getId() == ID) {
                             System.out.println(teacherList.get(i));
                             break;
                         }
@@ -91,30 +99,21 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public void sortTeacher() {
-        boolean isSwap = true;
-        Teacher teacher;
-        for (int i = 0; i < teacherList.size() - 1 && isSwap; i++) {
-            isSwap = false;
-            for (int j = 0; j < teacherList.size() - 1 - i; j++) {
-                int compareName = teacherList.get(j).getName().compareTo(teacherList.get(j + 1).getName());
-                if ( compareName> 0) {
-                    isSwap = true;
-                    teacher = teacherList.get(j + 1);
-                    teacherList.set(j + 1, teacherList.get(j));
-                    teacherList.set(j, teacher);
-                }
-                if (compareName==0){
-                    int compareId= teacherList.get(j).getInteger().compareTo(teacherList.get(j + 1).getInteger());
-                    if (compareId>0){
-                        isSwap = true;
-                        teacher = teacherList.get(j + 1);
-                        teacherList.set(j + 1, teacherList.get(j));
-                        teacherList.set(j, teacher);
-                    }
+        boolean needNextPass = true;
+        for (int i = 1; i < teacherList.size() && needNextPass; i++) {
+
+            needNextPass = false;
+            for (int j = 0; j < teacherList.size() - i; j++) {
+                if (teacherList.get(j).getName().compareTo(teacherList.get(j + 1).getName()) > 0) {
+                    Collections.swap(teacherList, j, j + 1);
+                    needNextPass = true;
                 }
             }
         }
-        displayTeacher();
+        System.out.println("Danh sách sau sắp xếp: ");
+        for (int i = 0; i < teacherList.size(); i++) {
+            System.out.println(teacherList.get(i).toString());
+        }
     }
 
 

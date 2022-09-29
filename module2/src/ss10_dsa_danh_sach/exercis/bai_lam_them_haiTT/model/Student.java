@@ -7,10 +7,16 @@ public class Student extends Person{
     public Student() {
     }
 
-    public Student(int id, String name, Integer dateOfBirth, String sex, String className, double point) {
+    public Student(int id, String name, int dateOfBirth, String sex, String className, double point) {
         super(id, name, dateOfBirth, sex);
         this.className = className;
         this.point = point;
+    }
+
+    public Student(int id, String name, int dateOfBirth, String sex, String className, Double point) {
+    }
+
+    public Student(int parseInt, String s, String s1, String s2, String s3, double parseDouble) {
     }
 
     public Student(int id, String name, Integer dateOfBirth, String sex, String className, Double point) {
@@ -33,7 +39,7 @@ public class Student extends Person{
     }
 
     public String getInfo() {
-        return String.format("%s,%s,%s,%s,%s,%s\n", this.getInteger(), this.getName(), this.getDateOfBirth(), this.getSex(),
+        return String.format("%s,%s,%s,%s,%s,%s\n", this.getId(), this.getName(), this.getDateOfBirth(), this.getSex(),
                 this.getClassName(), this.getPoint());
     }
 
