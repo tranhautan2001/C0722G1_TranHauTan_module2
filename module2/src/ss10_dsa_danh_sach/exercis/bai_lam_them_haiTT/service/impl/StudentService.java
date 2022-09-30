@@ -16,8 +16,7 @@ import java.util.Scanner;
 
 public class StudentService implements IStudentService {
     private static Scanner scanner = new Scanner(System.in);
-    private static final String PATH = "ss10_dsa_danh_sach\\exercis\\bai_lam_them_haiTT\\data\\student.txt";
-    private static List<Student> studentList = ReadFile.readStudentFile(PATH);
+    private static List<Student> studentList = ReadFile.readStudentFile("ss10_dsa_danh_sach\\exercis\\bai_lam_them_haiTT\\data\\student.txt");
 
 
     @Override
@@ -26,7 +25,7 @@ public class StudentService implements IStudentService {
         studentList.add(student);
         System.out.println("Thêm mới sinh viên thành công! ");
 
-        WriteFile.writeStudentFile(PATH,studentList);
+        WriteFile.writeStudentFile("ss10_dsa_danh_sach\\exercis\\bai_lam_them_haiTT\\data\\student.txt",studentList);
     }
 
     @Override
@@ -45,7 +44,7 @@ public class StudentService implements IStudentService {
                     studentList.remove(student);
                     System.out.println("Xóa thành công! ");
 
-                    WriteFile.writeStudentFile(PATH,studentList);
+                    WriteFile.writeStudentFile("ss10_dsa_danh_sach\\exercis\\bai_lam_them_haiTT\\data\\student.txt",studentList);
 
                 }
                 isFlag = true;
@@ -156,7 +155,7 @@ public class StudentService implements IStudentService {
 
             }
         }
-        Integer dateOfBirth;
+        int dateOfBirth;
         do {
             System.out.println("Mời bạn nhập ngày sinh học sinh: ");
             try {

@@ -11,8 +11,6 @@ public class Teacher extends Person {
         this.specialize = specialize;
     }
 
-    public Teacher(int id, String name, String s, String sex, String specialize) {
-    }
 
     public String getSpecialize() {
         return specialize;

@@ -13,15 +13,6 @@ public class Student extends Person{
         this.point = point;
     }
 
-    public Student(int id, String name, int dateOfBirth, String sex, String className, Double point) {
-    }
-
-    public Student(int parseInt, String s, String s1, String s2, String s3, double parseDouble) {
-    }
-
-    public Student(int id, String name, Integer dateOfBirth, String sex, String className, Double point) {
-    }
-
     public String getClassName() {
         return className;
     }

@@ -134,7 +134,7 @@ public class TeacherService implements ITeacherService {
                 System.out.println("không nhập chữ");
             }
         } while (true);
-        String name = "";
+        String name;
         while (true){
             try {
                 System.out.print("Mời bạn nhập tên giảng viên: ");
@@ -152,7 +152,7 @@ public class TeacherService implements ITeacherService {
         }
 
 
-        Integer dateOfBirth;
+        int dateOfBirth;
         do {
             System.out.println("Mời bạn nhập ngày sinh giảng viên: ");
             try {

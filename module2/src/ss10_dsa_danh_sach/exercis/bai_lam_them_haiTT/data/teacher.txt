@@ -1,2 +1,1 @@
-5,kk,6,hh,kk
-5,gg,5,ff,ff
+1,tan,27,nam,tt
