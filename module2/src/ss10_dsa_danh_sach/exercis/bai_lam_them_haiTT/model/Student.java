@@ -7,11 +7,13 @@ public class Student extends Person{
     public Student() {
     }
 
-    public Student(int id, String name, int dateOfBirth, String sex, String className, double point) {
+    public Student(int id, String name, String dateOfBirth, String sex, String className, double point) {
         super(id, name, dateOfBirth, sex);
         this.className = className;
         this.point = point;
     }
+
+
 
     public String getClassName() {
         return className;

@@ -12,12 +12,13 @@ import ss10_dsa_danh_sach.exercis.bai_lam_them_haiTT.service.IStudentService;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class StudentService implements IStudentService {
     private static Scanner scanner = new Scanner(System.in);
     private static List<Student> studentList = ReadFile.readStudentFile("ss10_dsa_danh_sach\\exercis\\bai_lam_them_haiTT\\data\\student.txt");
-
 
     @Override
     public void addStudent() {
@@ -25,7 +26,7 @@ public class StudentService implements IStudentService {
         studentList.add(student);
         System.out.println("Thêm mới sinh viên thành công! ");
 
-        WriteFile.writeStudentFile("ss10_dsa_danh_sach\\exercis\\bai_lam_them_haiTT\\data\\student.txt",studentList);
+        WriteFile.writeStudentFile("ss10_dsa_danh_sach\\exercis\\bai_lam_them_haiTT\\data\\student.txt", studentList);
     }
 
     @Override
@@ -44,7 +45,7 @@ public class StudentService implements IStudentService {
                     studentList.remove(student);
                     System.out.println("Xóa thành công! ");
 
-                    WriteFile.writeStudentFile("ss10_dsa_danh_sach\\exercis\\bai_lam_them_haiTT\\data\\student.txt",studentList);
+                    WriteFile.writeStudentFile("ss10_dsa_danh_sach\\exercis\\bai_lam_them_haiTT\\data\\student.txt", studentList);
 
                 }
                 isFlag = true;
@@ -118,8 +119,6 @@ public class StudentService implements IStudentService {
     }
 
 
-
-
     public static Student infoStudent() {
         Scanner scanner = new Scanner(System.in);
         int id;
@@ -139,62 +138,77 @@ public class StudentService implements IStudentService {
         } while (true);
 
 
-        String name ;
+        String name;
         while (true){
-            try {
-                System.out.print("Mời bạn nhập tên học sinh: ");
-                name = scanner.nextLine();
-                for (int i = 0; i <name.length() ; i++) {
-                    if(Character.isDigit(name.charAt(i))) {
-                        throw new CheckNameException("Tên không được chứa số");
-                    }
-                }
-                break;
-            } catch (CheckNameException e) {
-                System.out.println(e.getMessage());
 
+            System.out.print("Mời bạn nhập tên học sinh : ");
+            name = scanner.nextLine();
+            if (name.matches("^([A-Z][a-z]{1,6}\\s)*[A-Z][a-z]{1,6}$")){
+                System.out.println("thêm thành công");
+                break;
+            }else {
+                System.out.println("thêm không thành công");
             }
         }
-        int dateOfBirth;
+        String dateOfBirth = "";
         do {
+            Pattern pattern = Pattern.compile("^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$");
             System.out.println("Mời bạn nhập ngày sinh học sinh: ");
-            try {
-                dateOfBirth = Integer.parseInt(scanner.nextLine());
-                if (dateOfBirth<=0){
-                    throw new CheckNumberException("nhập sai định dạng");
-                }
+            dateOfBirth = scanner.nextLine();
+            Matcher matcher = pattern.matcher(dateOfBirth);
+            if (matcher.matches()) {
+                System.out.println("nhập đúng đinh dạng");
                 break;
-            }catch (CheckNumberException e){
-                System.out.println("nhập lại");
-            }catch (NumberFormatException e){
-                System.out.println(e.getMessage());
+            } else {
+                System.out.println("nhập sai đinh dạng");
             }
 
-        }while (true);
+        } while (true);
 
-        System.out.print("Mời bạn nhập giới tính học sinh: ");
-        String sex = scanner.nextLine();
-        System.out.print("Mời bạn nhập tên lớp: ");
-        String className = scanner.nextLine();
+        String sex;
+        while (true) {
+
+            System.out.println("Nhập giới tính của sinh viên: ");
+            sex = scanner.nextLine();
+            if (sex.matches("^(NAM)|(NU)|(EGBT)$")){
+                System.out.println("thêm thành công ");
+                break;
+            }else {
+                System.out.println("thêm không thành công ");
+            }
+
+        }
+        String className = "";
+        while (true) {
+            Pattern pattern1 = Pattern.compile("^[CAP]\\d{4}[GHIKLM]$");
+            System.out.print("Mời bạn nhập tên lớp: ");
+            className = scanner.nextLine();
+            Matcher matcher1 = pattern1.matcher(className);
+            if (matcher1.matches()) {
+                System.out.println("nhập đúng định dạng");
+                break;
+            } else {
+                System.out.println("nhập sai định dạng");
+            }
+        }
         Double point;
         do {
             System.out.print("Mời bạn nhập điểm của học sinh: ");
             try {
                 point = Double.parseDouble(scanner.nextLine());
-                if (point<0 || point>100){
+                if (point < 0 || point > 100) {
                     throw new CheckScoreExeception("nhập sai định dạng");
 
                 }
                 break;
-            }catch (CheckScoreExeception e){
+            } catch (CheckScoreExeception e) {
                 System.out.println("nhập lại");
-            }catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.println(e.getMessage());
             }
-        }while (true);
+        } while (true);
 
         Student student = new Student(id, name, dateOfBirth, sex, className, point);
         return student;
     }
-
 }

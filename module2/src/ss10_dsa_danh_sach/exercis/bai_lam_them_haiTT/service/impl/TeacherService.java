@@ -11,6 +11,8 @@ import ss_16_text_file.exercis.exercis1.common.Writer;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TeacherService implements ITeacherService {
     private static Scanner scanner = new Scanner(System.in);
@@ -136,41 +138,45 @@ public class TeacherService implements ITeacherService {
         } while (true);
         String name;
         while (true){
-            try {
+
                 System.out.print("Mời bạn nhập tên giảng viên: ");
                 name = scanner.nextLine();
-                for (int i = 0; i <name.length() ; i++) {
-                    if(Character.isDigit(name.charAt(i))) {
-                        throw new CheckNameException("Tên không được chứa số");
-                    }
-                }
-                break;
-            } catch (CheckNameException e) {
-                System.out.println(e.getMessage());
-
-            }
+              if (name.matches("^([A-Z][a-z]{1,6}\\s)*[A-Z][a-z]{1,6}$")){
+                  System.out.println("thêm thành công");
+                  break;
+              }else {
+                  System.out.println("thêm không thành công");
+              }
         }
-
-
-        int dateOfBirth;
+     //   ("[0-3][0-9]/[0,1][0-9]/\\d{4}")
+        String dateOfBirth = "";
         do {
+            Pattern pattern = Pattern.compile("^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$");
             System.out.println("Mời bạn nhập ngày sinh giảng viên: ");
-            try {
-                dateOfBirth = Integer.parseInt(scanner.nextLine());
-                if (dateOfBirth<=0){
-                    throw new CheckNumberException("nhập sai định dạng");
-                }
+            dateOfBirth = scanner.nextLine();
+            Matcher matcher = pattern.matcher(dateOfBirth);
+            if (matcher.matches()) {
+                System.out.println("nhập đúng đinh dạng");
                 break;
-            }catch (CheckNumberException e){
-                System.out.println("nhập lại");
-            }catch (NumberFormatException e){
-                System.out.println(e.getMessage());
+            } else {
+                System.out.println("nhập sai đinh dạng");
             }
 
-        }while (true);
+        } while (true);
 
-        System.out.print("Mời bạn nhập giới tính giảng viên: ");
-        String sex = scanner.nextLine();
+        String sex;
+        while (true) {
+
+            System.out.println("Nhập giới tính của sinh viên: ");
+            sex = scanner.nextLine();
+            if (sex.matches("^(NAM)|(NU)|(EGBT)$")){
+                System.out.println("thêm thành công ");
+                break;
+            }else {
+                System.out.println("thêm không thành công ");
+            }
+
+        }
         String specialize = "";
         do {
             System.out.println("Mời bạn nhập chuyên môn giảng viên : ");
