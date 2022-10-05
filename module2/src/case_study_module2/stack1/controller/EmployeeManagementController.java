@@ -21,15 +21,15 @@ public class EmployeeManagementController {
                 int choice = Integer.parseInt(scanner.nextLine());
                 switch (choice){
                     case 1:{
-                        iEmployeeManagementService.displaylistemployees();
+                        iEmployeeManagementService.displayListEmployees();
                         break;
                     }
                     case 2:{
-                        iEmployeeManagementService.addnewemployee();
+                        iEmployeeManagementService.addNewEmployee();
                         break;
                     }
                     case 3:{
-                        iEmployeeManagementService.editemployee();
+                        iEmployeeManagementService.editEmployee();
                         break;
                     }
                     case 4:{

@@ -1,23 +1,33 @@
 package case_study_module2.stack1.model.person;
 
 public abstract class Person {
+    private int id;
     private String name;
     private String dateOfBirth;
     private String sex;
-    private int cmnd;
-    private int phoneNumber;
+    private String idCard;
+    private String phoneNumber;
     private String email;
 
     public Person() {
     }
 
-    public Person(String name, String dateOfBirth, String sex, int cmnd, int phoneNumber, String email) {
+    public Person(int id, String name, String dateOfBirth, String sex, String idCard, String phoneNumber, String email) {
+        this.id = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.sex = sex;
-        this.cmnd = cmnd;
+        this.idCard = idCard;
         this.phoneNumber = phoneNumber;
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -44,19 +54,19 @@ public abstract class Person {
         this.sex = sex;
     }
 
-    public int getCmnd() {
-        return cmnd;
+    public String getIdCard() {
+        return idCard;
     }
 
-    public void setCmnd(int cmnd) {
-        this.cmnd = cmnd;
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -70,12 +80,13 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", sex='" + sex + '\'' +
-                ", cmnd=" + cmnd +
-                ", phoneNumber=" + phoneNumber +
+        return "Người {" +
+                "Mã Nhân Viên =" + id +
+                ", Tên ='" + name + '\'' +
+                ", Ngày Sinh ='" + dateOfBirth + '\'' +
+                ", Giới Tính ='" + sex + '\'' +
+                ", Số CMND =" + idCard +
+                ", Số Điện Thoại =" + phoneNumber +
                 ", email='" + email + '\'' +
                 '}';
     }

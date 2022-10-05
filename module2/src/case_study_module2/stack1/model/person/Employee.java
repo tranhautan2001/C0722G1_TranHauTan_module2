@@ -1,25 +1,25 @@
 package case_study_module2.stack1.model.person;
 
 public class Employee extends Person{
-  private int level;
+  private String level;
   private String location;
   private double wage;
 
     public Employee() {
     }
 
-    public Employee(String name, String dateOfBirth, String sex, int cmnd, int phoneNumber, String email, int level, String location, double wage) {
-        super(name, dateOfBirth, sex, cmnd, phoneNumber, email);
+    public Employee(int id, String name, String dateOfBirth, String sex, String idCard, String phoneNumber, String email, String level, String location, double wage) {
+        super(id, name, dateOfBirth, sex, idCard, phoneNumber, email);
         this.level = level;
         this.location = location;
         this.wage = wage;
     }
 
-    public int getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 
@@ -39,12 +39,16 @@ public class Employee extends Person{
         this.wage = wage;
     }
 
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n", this.getId(), this.getName(), this.getDateOfBirth(), this.getSex(),
+                this.getIdCard(), this.getPhoneNumber(), this.getEmail(), this.getLevel(),this.getLocation(),this.getWage());
+    }
     @Override
     public String toString() {
-        return "Employee{" +
-                "level=" + level +
-                ", location='" + location + '\'' +
-                ", wage=" + wage +
-                '}';
+        return "Nhân Viên {" +
+                "Trình Độ =" + level +
+                ", Vị Trí  ='" + location + '\'' +
+                ", Lương =" + wage +
+                '}'+super.toString();
     }
 }
