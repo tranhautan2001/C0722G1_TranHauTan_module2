@@ -12,10 +12,10 @@ public class EmployeeManagementController {
     public void menuEmployeeManagement() {
         do {
             System.out.println("---CHƯƠNG TRÌNH QUẢN LÝ NHÂN VIÊN---\n" +
-                    "1. Display list employees \n" +
-                    "2. Add new employee \n" +
-                    "3. Edit employee \n"  +
-                    "4. Return main menu");
+                    "1. Hiển Thị Danh Sách Nhân Viên \n" +
+                    "2. Thêm nhân viên mới \n" +
+                    "3. Chỉnh sửa nhân viên \n"  +
+                    "4. Trở lại menu chính");
             System.out.println("---------------------------");
             System.out.println("---------------------------");
                 int choice = Integer.parseInt(scanner.nextLine());

@@ -15,12 +15,12 @@ public class FuramaController {
         while (true) {
             System.out.println("--------------------");
             System.out.println("---CHƯƠNG TRÌNH QUẢN LÝ FURAMA---\n" +
-                    "1. Employee Management \n" +
-                    "2. Customer Management \n" +
-                    "3. Facility Management \n" +
-                    "4. Booking Management \n" +
-                    "5. Promotion Management \n" +
-                    "6. Exit");
+                    "1. Quản lý nhân sự \n" +
+                    "2. Quản lý khách hàng \n" +
+                    "3. Quản lý cơ sở \n" +
+                    "4. Quản lý đặt chỗ \n" +
+                    "5. Quản lý Quảng cáo \n" +
+                    "6. Thoát");
 
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {

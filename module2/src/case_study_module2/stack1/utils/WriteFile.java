@@ -1,10 +1,13 @@
 package case_study_module2.stack1.utils;
 
+import case_study_module2.stack1.model.facility.Facility;
 import case_study_module2.stack1.model.person.Customer;
 import case_study_module2.stack1.model.person.Employee;
 
 import java.io.*;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class WriteFile {
     private static  void writeFile(String path,String data){
@@ -33,5 +36,14 @@ public class WriteFile {
         }
         writeFile(path,data.toString());
     }
+    public static void writeFacility(String path, Map<Facility ,Integer> facilityIntegerMap){
+        String data = "";
+        Set<Facility> facilities = facilityIntegerMap.keySet();
+        for (Facility facility : facilities) {
+            data += facility.getInfo();
+        }
+        writeFile(path, data);
+    }
+
 
 }

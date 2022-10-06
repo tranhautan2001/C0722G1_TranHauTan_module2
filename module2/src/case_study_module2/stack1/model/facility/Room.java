@@ -8,8 +8,8 @@ public class Room extends Facility {
     public Room() {
     }
 
-    public Room(String name, double area, int cost, int people, String rentalType, String freeService) {
-        super(name, area, cost, people, rentalType);
+    public Room(String id, String name, double area, int cost, int people, String rentalType, String freeService) {
+        super(id, name, area, cost, people, rentalType);
         this.freeService = freeService;
     }
 
@@ -21,10 +21,14 @@ public class Room extends Facility {
         this.freeService = freeService;
     }
 
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s\n",this.getId(), this.getName(),this.getArea(), this.getCost(), this.getPeople(),
+                this.getRentalType(), this.getFreeService());
+    }
     @Override
     public String toString() {
-        return "Room{" +
-                "freeService='" + freeService + '\'' +
-                '}';
+        return " Phòng {" +
+                "Dịch Vụ Miễn Phí ='" + freeService + '\'' +
+                '}'+super.toString();
     }
 }

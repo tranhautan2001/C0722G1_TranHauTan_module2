@@ -87,7 +87,7 @@ public abstract class Person {
                 ", Giới Tính ='" + sex + '\'' +
                 ", Số CMND =" + idCard +
                 ", Số Điện Thoại =" + phoneNumber +
-                ", email='" + email + '\'' +
+                ", Email='" + email + '\'' +
                 '}';
     }
 }

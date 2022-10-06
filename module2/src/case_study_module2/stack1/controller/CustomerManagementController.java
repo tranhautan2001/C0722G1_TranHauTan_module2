@@ -9,10 +9,10 @@ public class CustomerManagementController {
     public void menuCustomerManagement() {
         do {
             System.out.println("---CHƯƠNG TRÌNH QUẢN LÝ KHÁCH HÀNG---\n" +
-                    "1. Display list customers \n" +
-                    "2. Add new customers \n" +
-                    "3. Edit customers \n"  +
-                    "4. Return main menu");
+                    "1. Hiển thị danh sách khách hàng \n" +
+                    "2. Thêm khách hàng mới \n" +
+                    "3. Chỉnh sửa khách hàng \n"  +
+                    "4. Trở lại menu chính");
             System.out.println("---------------------------");
             System.out.println("---------------------------");
             int choice = Integer.parseInt(scanner.nextLine());
